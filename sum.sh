@@ -1,5 +1,5 @@
 #!/bin/bash
-n1=100
+n1=sivakumar
 n2=200
 Timestamp=$(date)
 sum=$(($n1+$n2))
