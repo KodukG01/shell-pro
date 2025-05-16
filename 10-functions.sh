@@ -41,7 +41,7 @@ fi
 if [ $? -ne 0 ]
 then 
 echo "Nginx is not installed and going to install it"
-dnf install mysql -y
+dnf install nginx -y
 VALIDATE $? "NGINX"
 else
 echo "Nginx is already installed nothing to do"
