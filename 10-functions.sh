@@ -1,50 +1,57 @@
 #!/bin/bash
-userid=$(id -u)
-if [ $userid -ne 0 ]
+USERID=$(id -u)
+if [ $USERID -ne 0 ]
 then
-echo "Error:: Run script with root access"
-exit 1 #other than '0' any thing can be given
-else
-echo "You are running with root access"
-fi
-VALIDATE() {
-    if [ $1 -eq 0 ]
-then
-echo "Installation of $2 is ......Success"
-else
-echo "Installation of $2 is ......Failure"
+echo "ERROR:: Please run with root access"
 exit 1
-fi 
-}
-dnf list installed mysql
+else
+echo "Running script with root access"
+fi
 
+VALIDATE(){
+    if [ $1 -eq 0 ]
+    then
+    echo "Installing $2 is success"
+    else
+    echo "Installing $2 is failure"
+    exit 1
+    fi
+
+}
+
+dnf list installed mysql
 if [ $? -ne 0 ]
-then 
-echo "Mysql is not installed and going to install it"
+then
+echo "MYSQL not installed, Installing it"
 dnf install mysql -y
 VALIDATE $? "MYSQL"
 else
-echo "MySql is already installed nothing to do"
-
+echo "MYSQL is installed nothing to do"
 fi
 dnf list installed python3
 if [ $? -ne 0 ]
-then 
-echo "Python3 is not installed and going to install it"
-dnf install Python3 -y
-VALIDATE $? "Python3"
+then
+echo "Python3 not installed, Installing it"
+dnf install python3 -y
+VALIDATE $? "PYTHON3"
 else
-echo "Python3 is already installed nothing to do"
-
+echo "Python3 installed nothing to do"
 fi
 dnf list installed nginx
 if [ $? -ne 0 ]
-then 
-echo "Nginx is not installed and going to install it"
+then
+echo "nginx not installed, Installing it"
 dnf install nginx -y
 VALIDATE $? "NGINX"
 else
-echo "Nginx is already installed nothing to do"
-
+echo "nginx installed, nothing to do"
 fi
-
+echo "Check status of nginx"
+systemctl status nginx
+if [ $? -ne 0 ]
+then
+echo "NGINX is not running, starting it"
+systemctl start nginx
+else
+echo "NGINX is running"
+fi
