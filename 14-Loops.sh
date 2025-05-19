@@ -18,8 +18,7 @@ mkdir -p $LOGS_FOLDER
  else
  echo "Running with root access" | tee -a $LOG_FILE
  fi
-
- VALIDATE(){
+VALIDATE(){
     if [ $1 -eq 0 ]
     then
     echo -e "Installing $2 is successful" | tee -a $LOG_FILE
