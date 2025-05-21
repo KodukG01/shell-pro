@@ -8,10 +8,10 @@ LOGS_FOLDER="/var/log/roboshop-log"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 $SCRIPT_DIR=$PWD
-
+START_TIME=$(date)
 mkdir -p $LOGS_FOLDER
 
-echo "Script execution starts at $(date)" | tee -a $LOG_FILE
+echo "Script execution starts at $START_TIME" | tee -a $LOG_FILE
 
 if [ $UserID -ne 0 ]
 then
@@ -48,3 +48,9 @@ VALIDATE $? "Enabling redis" &>>$LOG_FILE
 
 systemctl start redis 
 VALIDATE $? "Starting redis" &>>$LOG_FILE
+
+END_TIME=$(date +%s)
+TOTAL_TIME=$(( $END_TIME - $START_TIME )) | tee -a $LOG_FILE
+
+echo -e "Script executed successfully, $Y time taken: $TOTAL_TIME"
+
