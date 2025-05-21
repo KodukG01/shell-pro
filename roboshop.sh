@@ -6,7 +6,7 @@ ZONE_ID="Z0252688T5XCJOJGZQAF"
 SUBNET_ID="subnet-081664e4edc3280ae"
 DOMAIN_NAME="devsecops.fun"
 
-for instance in $@
+for instance in ${INSTANCES[@]}
 do
 INSTANCES_ID=$(aws ec2 run-instances --image-id ami-09c813fb71547fc4f --instance-type t2.micro --subnet-id subnet-081664e4edc3280ae --security-group-ids sg-0b63e6b5c62c2af12 --tag-specifications "ResourceType=instance,Tags=[{Key=Name, Value=$instance}]" --query "Instances[0].InstanceId" --output text)
 if [ $instance != "frontend" ]
