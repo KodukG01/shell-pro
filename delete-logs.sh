@@ -38,4 +38,3 @@ do
     rm -rf $filepath
 done <<< $FILES_TO_DELETE
 
-echo "script executed successfully"
