@@ -42,3 +42,16 @@ if [ $# -lt 2 ]
 then
     usage
 fi
+
+if [ ! -d $SOURCE_DIR ]
+then
+echo -e "$R $SOURCE_DIR does not exist, please check $N"
+exit 1
+fi
+
+if [ ! -d  $DEST_DIR ]
+then
+echo -e "$R $DEST_DIR does not exist, please check $N"
+exit 1
+fi
+
