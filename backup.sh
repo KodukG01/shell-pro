@@ -55,7 +55,7 @@ echo -e "$R Destination Directory $DEST_DIR does not exist, please check $N"
 exit 1
 fi
 
-FILES=$(find $SOURCE_DIR -name "*.log" mtime +$DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 if [ ! -z $FILES ]
 then
