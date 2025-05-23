@@ -61,5 +61,5 @@ if [ ! -z $FILES ]
 then
     echo "Files to zip are: $FILES"
 else
-echo "No files found older than 14 days ..... $YSkipping$N"
+echo "No files found older than 14 days ..... $Y Skipping $N"
 fi
