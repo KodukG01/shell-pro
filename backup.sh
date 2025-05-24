@@ -58,6 +58,14 @@ then
     exit 1
 fi
 
+file=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+
+if [ ! -z $file ]
+then
+    echo "Files found"
+ else
+    echo "No files found older than 14 days .... $Y Skipping $N"
+fi
 
 
 
