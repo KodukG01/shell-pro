@@ -68,7 +68,6 @@ then
     echo $FILES | zip -@ $ZIP_FILE"
 else
     echo -e "No logs found older than 14 days.... $Y Skipping $N"
-    exit 1
 fi
 
 
