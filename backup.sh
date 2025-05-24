@@ -48,13 +48,14 @@ fi
 
 if [ ! -d $SOURCE_DIR ]
 then
-    echo -e "$R  $SOURCE_DIR doesnt exist please check"
+    echo -e "$R Source Directory  $SOURCE_DIR doesnt exist please check"
     exit 1
 fi
 
 if [ ! -d $DEST_DIR ]
 then
-    echo -e "$R $DEST_DIR doesnt exist please check"
+    echo -e "$R Source Directory $DEST_DIR doesnt exist please check"
+    exit 1
 fi
 
 
