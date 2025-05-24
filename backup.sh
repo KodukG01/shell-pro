@@ -69,3 +69,17 @@ then
 else
     echo -e "No log file found older than 14 days .... $Y Skipping $N"
 fi
+
+if [ -f $ZIP_FILE ]
+then
+    echo -e "Successfully created zip file"
+
+    while IFS= read -r filepath
+    do
+    echo "Deleting file: $filepath"
+    rm -rf $filepath
+    done <<< $FILES
+else
+    echo -e "No zip file created"
+    exit 1
+fi
