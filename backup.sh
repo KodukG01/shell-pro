@@ -12,6 +12,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 
+check_root(){
 if [ $USERID -ne 0 ]
 then
     echo "$R ERROR::Please run with root access $N"
@@ -19,6 +20,7 @@ then
 else
     echo "Running with root access"
 fi
+}
 
 VALIDATE(){
     if [ $1 -eq 0 ]
