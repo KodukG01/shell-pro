@@ -58,9 +58,9 @@ then
     exit 1
 fi
 
-Files=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
-if [ ! -z $Files ]
+if [ ! -z $FILES ]
 then
     echo "Files found"
  else
