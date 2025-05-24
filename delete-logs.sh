@@ -8,6 +8,10 @@ SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE=/$LOGS_FOLDER/$SCRIPT_NAME.log
 SOURCE_DIR=/home/ec2-user/app-logs
 
+mkdir -p $LOGS_FOLDER
+
+echo "Script started executing at $(date)" | tee -a $LOG_FILE
+
 if [ $USERID -ne 0 ]
 then
     echo "$R ERROR:: Please run with root access $N" | tee -a $LOG_FILE
@@ -25,10 +29,6 @@ VALIDATE(){
         exit 1
     fi
 }
-
-mkdir -p $LOGS_FOLDER
-
-echo "Script started executing at $(date)" | tee -a $LOG_FILE
 
 FILES_TO_DELETE=$(find . -name "*.log" -mtime +14)
 
